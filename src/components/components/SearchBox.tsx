@@ -21,7 +21,7 @@ const SearchBox = () => {
             </div>
 
             <div className="w-[10%]">
-                <button className="bg-[#003b95] active:scale-90 cursor-pointer w-full duration-300 border hover:border-[#003b95] hover:bg-transparent hover:text-black rounded-full py-2 text-white gro text-2xl">Search</button>
+                <button className="bg-[#003b95] active:scale-95 cursor-pointer w-full duration-300 border hover:border-[#003b95] hover:bg-transparent hover:text-black rounded-full py-2 text-white gro text-2xl">Search</button>
             </div>
 
         </div>
