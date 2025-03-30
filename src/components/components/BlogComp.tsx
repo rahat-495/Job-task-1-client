@@ -72,7 +72,7 @@ const BlogComp = ({blog} : {blog : Blog}) => {
                         blog.images.map((image) => (
                             <CarouselItem key={image} className="pl-1 md:basis-1/2 lg:basis-xs cursor-grab active:cursor-grabbing">
                             <div className="p-1">
-                                <img src={image} alt="blog_image" className="w-[450px] h-[200px] rounded"/>
+                                <img loading="lazy" src={image} alt="blog_image" className="w-[450px] h-[200px] rounded"/>
                             </div>
                             </CarouselItem>
                         ))  
