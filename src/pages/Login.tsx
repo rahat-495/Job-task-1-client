@@ -1,14 +1,30 @@
 
 import { Input } from "@/components/ui/input";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { setUser } from "@/redux/features/auth/authSlice";
+import { useAppDispatch } from "@/redux/hooks";
+import { verifyToken } from "@/utils/verifyTokent";
 import { FieldValues, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
 
+    const navigate = useNavigate() ;
+    const dispatch = useAppDispatch() ;
+    const [login] = useLoginMutation() ;
     const {handleSubmit , register} = useForm() ;
 
-    const onSubmit = (data : FieldValues) => {
-        console.log(data);
+    const onSubmit = async (data : FieldValues) => {
+        const res = await login(data).unwrap() ;
+        if(res?.success){
+            toast.success("Login Successfull") ;
+            dispatch(setUser({user : verifyToken(res?.data?.accesstoken) , token : res?.data?.accesstoken})) ;
+            navigate('/') ;
+        }
+        else{
+            toast.error(res?.message) ;
+        }
     };
 
     return (
